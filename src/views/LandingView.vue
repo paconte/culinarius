@@ -6,7 +6,7 @@
         <div class="field has-addons">
           <p class="control">
             <span class="select is-large">
-              <select v-model="location">
+              <select style="padding-right: 60px" v-model="location">
                 <option disabled value="">Select your location</option>
                 <option>Adlershof</option>
                 <option>Alexanderplatz</option>
