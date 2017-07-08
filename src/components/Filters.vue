@@ -59,9 +59,9 @@
               </div>
               <div class="field">
                 <div class="control is-expanded">
-                  <div class="select is-fullwidth is-disabled">
-                    <select disabled>
-                      <option>Friday - 19.05.2017</option>
+                  <div class="select is-fullwidth">
+                    <select v-model="date">
+                      <option v-for="date in dates">{{date}}</option>
                     </select>
                   </div>
                 </div>
@@ -83,10 +83,10 @@
             <article class="media">
               <div class="media-left">
                 <figure class="image is-32x32">
-                  <img v-if="product.type.indexOf('Vegan') > -1 && product.type.indexOf('Vegetarian') > -1" src="./assets/apple.png" alt="Image">
-                  <img v-else-if="product.type.indexOf('Vegan') > -1" src="./assets/apple.png" alt="Image">
-                  <img v-else-if="product.type.indexOf('Vegetarian') > -1" src="./assets/carrot.png" alt="Image">
-                  <img v-else-if="product.type.indexOf('Fish') > -1" src="./assets/fish.png" alt="Image">
+                  <img v-if="product.type.indexOf('vegan') > -1 && product.type.indexOf('vegetarian') > -1" src="./assets/apple.png" alt="Image">
+                  <img v-else-if="product.type.indexOf('vegan') > -1" src="./assets/apple.png" alt="Image">
+                  <img v-else-if="product.type.indexOf('vegetarian') > -1" src="./assets/carrot.png" alt="Image">
+                  <img v-else-if="product.type.indexOf('fish') > -1" src="./assets/fish.png" alt="Image">
                   <img v-else src="./assets/tray.png" alt="Image">
                 </figure>
               </div>
@@ -125,11 +125,14 @@ export default {
       query: '',
       locations: ProductStore.getFilters('location'),
       location: this.$route.params.location,
+      dates: ProductStore.getAvailableDates(),
+      date: ProductStore.getDate(),
     };
   },
   watch: {
     query: 'searchQuery',
     location: 'changeLocation',
+    date: 'changeDate',
   },
   methods: {
     onResize() {
@@ -176,6 +179,7 @@ export default {
     },
     searchQuery() { ProductStore.searchQuery(this.query); },
     changeLocation() { this.$router.push(this.location); },
+    changeDate() { ProductStore.setDate(this.date); },
   },
   mounted() {
     this.onResize();

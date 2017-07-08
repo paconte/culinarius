@@ -1,5 +1,23 @@
 import products from './test';
 
+const moment = require('moment');
+
+const currentDate = moment();
+const momentFormat = 'dddd - DD.MM.YYYY';
+
+function formatDate(date) { return date.format(momentFormat); }
+
+function getAvailableDates() {
+  const result = [];
+  let day;
+  // Sunday=0 and Saturday=6
+  for (let i = 1; i < 6; i += 1) {
+    day = moment().day(i);
+    if (day.isSameOrAfter(currentDate, 'day')) { result.push(day); }
+  }
+  return result;
+}
+
 
 const ProductStore = {
   debug: true,
@@ -8,16 +26,18 @@ const ProductStore = {
     ingredientFilter: 'All',
     businessFilter: 'All',
     location: '',
+    date: moment(),
+    availableDates: getAvailableDates(),
     ingredients: [],
     businesses: [],
   },
   getIngredientFilter() { return this.state.ingredientFilter; },
   getBusinessFilter() { return this.state.businessFilter; },
   getLocation() { return this.state.location; },
-  getProducts(location) {
-    this.state.location = location;
+  getDate() { return formatDate(this.state.date); },
+  getAvailableDates() {
     const result = [];
-    products.forEach((x) => { if (x.location === location) { result.push(x); } });
+    this.state.availableDates.forEach((x) => { result.push(formatDate(x)); });
     return result;
   },
   setLocation(location) {
@@ -36,10 +56,18 @@ const ProductStore = {
     this.state.businessFilter = filter;
     this.state.products = this.getCurrentProducts();
   },
+  setDate(filter) {
+    this.state.date = moment(filter, momentFormat);
+    this.state.products = this.getCurrentProducts();
+    this.state.ingredients = this.getIngredientFilters();
+    this.state.businesses = this.getBusinessFilters();
+  },
   getCurrentProducts() {
     const result = [];
     products.forEach((x) => {
-      if (x.location === this.state.location) {
+      const date = moment(x.date, momentFormat);
+      if (x.location === this.state.location
+         && this.state.date.isSame(date, 'day')) {
         if (this.state.ingredientFilter === 'All' && this.state.businessFilter === 'All') {
           result.push(x);
         } else if (this.state.ingredientFilter === 'All' && x.business === this.state.businessFilter) {
@@ -54,6 +82,9 @@ const ProductStore = {
     });
     return result;
   },
+  /**
+  * Not used => delete?
+  */
   getFilteredProducts(location, filterFood, filterBusiness) {
     this.state.ingredientFilter = filterFood;
     this.state.businessFilter = filterBusiness;
@@ -73,6 +104,9 @@ const ProductStore = {
     });
     return result;
   },
+  /**
+   * returns all ingredients of the current products list.
+   */
   getIngredientFilters() {
     const auxSet = new Set();
     Object.keys(this.state.products).forEach((key) => {
@@ -82,6 +116,9 @@ const ProductStore = {
     result.splice(0, 0, 'All');
     return result;
   },
+  /**
+   * returns all business of the current products list.
+   */
   getBusinessFilters() {
     const auxSet = new Set();
     Object.keys(this.state.products).forEach((key) => {
@@ -91,6 +128,10 @@ const ProductStore = {
     result.splice(0, 0, 'All');
     return result;
   },
+  /**
+  * returns all the filters of the given types for all availabe products
+  * @param {string} type - the type of filter
+  */
   getFilters(type) {
     const auxSet = new Set();
     products.forEach((x) => {
@@ -104,6 +145,9 @@ const ProductStore = {
         case 'location':
           auxSet.add(x.location);
           break;
+        case 'date':
+          auxSet.add(x.date);
+          break;
         default:
       }
     });
@@ -113,6 +157,11 @@ const ProductStore = {
     }
     return result;
   },
+  /**
+  * returns all the available products with the given query. The query must has
+  * a length bigger than two chars.
+  * @param {string} query - the query to search in the products
+  */
   searchQuery(query) {
     if (typeof query === 'string' && query.length > 2) {
       const newProducts = [];
@@ -127,4 +176,5 @@ const ProductStore = {
     }
   },
 };
+
 export default ProductStore;
