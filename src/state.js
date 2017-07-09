@@ -55,6 +55,7 @@ const ProductStore = {
   setBusinessFilter(filter) {
     this.state.businessFilter = filter;
     this.state.products = this.getCurrentProducts();
+    this.state.ingredients = this.getIngredientFilters();
   },
   setDate(filter) {
     this.state.date = moment(filter, momentFormat);
