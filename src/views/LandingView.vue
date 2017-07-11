@@ -2,7 +2,7 @@
   <div>
   <section class="hero bg-img" style="height: 465px;">
     <div class="hero-body ">
-      <div class="container center-select">
+      <div class="container center-select" style="position: static">
         <div class="field has-addons">
           <p class="control">
             <span class="select is-large">
@@ -22,7 +22,7 @@
 
   <div class="container is-fluid" style="margin: 0 150px;">
     <div class="content">
-      <h1>Mahlzeit helps you to find your favorite working day lunch.</h1><br>
+      <h1>Culinarius helps you to find your favorite working day lunch.</h1><br>
         <div class="tile is-ancestor">
           <div class="tile is-vertical">
             <div class="tile">
