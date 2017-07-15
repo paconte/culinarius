@@ -80,6 +80,7 @@
           <!-- products -->
           <div >
           <div class="box" v-for="product in state.products">
+            <!--
             <article class="media">
               <div class="media-left">
                 <figure class="image is-32x32">
@@ -90,13 +91,23 @@
                   <img v-else src="./assets/tray.png" alt="Image">
                 </figure>
               </div>
+              <div v-if="product.type.indexOf('bio') > -1" class="media-left">
+                <figure class="image is-32x32">
+                  <img src="./assets/bio.png" alt="Image">
+                </figure>
+              </div>
+            -->
               <div class="media-content">
                 <div class="content">
                   <p>
                     <span class="is-small" style="font-size: small;">{{product.business}}</span><br>
                     {{product.name}}
                     <span v-if="product.price" class="tag is-warning is-pulled-right">{{product.price}} &euro;</span>
-                    <span v-else class="tag is-danger is-pulled-right">?? &euro;</span>
+                    <!--<span v-else class="tag is-danger is-pulled-right">?? &euro;</span>-->
+                    <span v-if="product.type.indexOf('vegan') > -1" class="tag is-primary is-pulled-right">vegan</span>
+                    <span v-if="product.type.indexOf('vegetarian') > -1 && product.type.indexOf('vegan') < 0" class="tag is-primary is-pulled-right">veggie</span>
+                    <span v-if="product.type.indexOf('fish') > -1" class="tag is-primary is-pulled-right">fish</span>
+                    <span v-if="product.type.indexOf('bio') > -1" class="tag is-primary is-pulled-right">bio</span>
                   </p>
                 </div>
               </div>
