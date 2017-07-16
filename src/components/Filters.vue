@@ -79,7 +79,7 @@
           </div>
           <!-- products -->
           <div >
-          <div class="box" v-for="product in state.products">
+          <div class="box custom-box" v-for="product in state.products">
             <!--
             <article class="media">
               <div class="media-left">
@@ -100,14 +100,16 @@
               <div class="media-content">
                 <div class="content">
                   <p>
-                    <span class="is-small" style="font-size: small;">{{product.business}}</span><br>
+                    <span class="is-small" style="font-size: small;">{{product.business}}</span>
+                    <br>
                     {{product.name}}
-                    <span v-if="product.price" class="tag is-warning is-pulled-right">{{product.price}} &euro;</span>
+                    <br>
+                    <span v-if="product.price" class="tag is-warning">{{product.price}} &euro;</span>
+                    <span v-if="product.type.indexOf('vegan') > -1" class="tag is-primary">vegan</span>
+                    <span v-if="product.type.indexOf('vegetarian') > -1 && product.type.indexOf('vegan') < 0" class="tag is-primary">veggie</span>
+                    <span v-if="product.type.indexOf('fish') > -1" class="tag is-primary ">fish</span>
+                    <span v-if="product.type.indexOf('bio') > -1" class="tag is-primary">bio</span>
                     <!--<span v-else class="tag is-danger is-pulled-right">?? &euro;</span>-->
-                    <span v-if="product.type.indexOf('vegan') > -1" class="tag is-primary is-pulled-right">vegan</span>
-                    <span v-if="product.type.indexOf('vegetarian') > -1 && product.type.indexOf('vegan') < 0" class="tag is-primary is-pulled-right">veggie</span>
-                    <span v-if="product.type.indexOf('fish') > -1" class="tag is-primary is-pulled-right">fish</span>
-                    <span v-if="product.type.indexOf('bio') > -1" class="tag is-primary is-pulled-right">bio</span>
                   </p>
                 </div>
               </div>
@@ -202,6 +204,11 @@ export default {
 </script>
 
 <style>
+.custom-box {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  /*box-shadow: 0 1px 1px rgba(10, 10, 10, 0.1), 0 0  1px rgba(10, 10, 10, 0.1);*/
+}
 .disappear {
   display: none;
 }
