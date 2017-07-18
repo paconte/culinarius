@@ -121,7 +121,8 @@ const ProductStore = {
     Object.keys(this.state.products).forEach((key) => {
       this.state.products[key].type.forEach((element) => { auxSet.add(element); });
     });
-    const result = Array.from(auxSet);
+    let result = Array.from(auxSet).sort();
+    result = result.sort();
     result.splice(0, 0, 'All');
     return result;
   },
@@ -133,7 +134,8 @@ const ProductStore = {
     Object.keys(this.state.products).forEach((key) => {
       auxSet.add(this.state.products[key].business);
     });
-    const result = Array.from(auxSet);
+    let result = Array.from(auxSet);
+    result = result.sort();
     result.splice(0, 0, 'All');
     return result;
   },
