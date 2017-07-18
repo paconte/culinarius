@@ -105,10 +105,11 @@
                     {{product.name}}
                     <br>
                     <span v-if="product.price" class="tag is-warning">{{product.price}} &euro;</span>
-                    <span v-if="product.type.indexOf('vegan') > -1" class="tag is-primary">vegan</span>
-                    <span v-if="product.type.indexOf('vegetarian') > -1 && product.type.indexOf('vegan') < 0" class="tag is-primary">veggie</span>
-                    <span v-if="product.type.indexOf('fish') > -1" class="tag is-primary ">fish</span>
-                    <span v-if="product.type.indexOf('bio') > -1" class="tag is-primary">bio</span>
+                    <!--<span class="tag is-primary">{{product.business}}</span>-->
+                    <span v-if="product.type.indexOf('Bio') > -1" class="tag is-primary">Bio</span>
+                    <span v-if="product.type.indexOf('Vegan') > -1" class="tag is-primary">Vegan</span>
+                    <span v-if="product.type.indexOf('Vegetarian') > -1 && product.type.indexOf('Vegan') < 0" class="tag is-primary">Veggie</span>
+                    <span v-if="product.type.indexOf('Fish') > -1" class="tag is-primary ">Fish</span>
                     <!--<span v-else class="tag is-danger is-pulled-right">?? &euro;</span>-->
                   </p>
                 </div>

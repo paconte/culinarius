@@ -136,6 +136,7 @@ const ProductStore = {
     });
     let result = Array.from(auxSet);
     result = result.sort();
+    // if (result.length > 1) { result.splice(0, 0, 'All'); }
     result.splice(0, 0, 'All');
     return result;
   },
