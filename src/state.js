@@ -176,14 +176,17 @@ const ProductStore = {
   */
   searchQuery(query) {
     if (typeof query === 'string' && query.length > 2) {
+      const qAux = query.toLowerCase();
+      this.state.products = this.getCurrentProducts();
       const newProducts = [];
       this.state.products.forEach((x) => {
-        if (x.business.indexOf(query) !== -1 || x.name.indexOf(query) !== -1) {
+        if (x.business.toLowerCase().indexOf(qAux) !== -1
+        || x.name.toLowerCase().indexOf(qAux) !== -1) {
           newProducts.push(x);
         }
       });
       this.state.products = newProducts;
-    } else if (query.length <= 2 && this.state.products.length === 0) {
+    } else if (query.length <= 2) {
       this.state.products = this.getCurrentProducts();
     }
   },
