@@ -29,7 +29,7 @@
               <div class="tile is-parent">
                 <article class="tile is-child notification has-text-centered">
                   <figure class="image is-4by3">
-                    <img src="../assets/location1.jpg">
+                    <img src="../assets/location1_1.jpg">
                   </figure>
                   <br>
                   <p class="title">Pick location</p>
@@ -40,7 +40,7 @@
             <div class="tile is-parent">
               <article class="tile is-child notification has-text-centered">
                 <figure class="image is-4by3">
-                  <img src="../assets/search-meal3.jpeg">
+                  <img src="../assets/search-meal3_1.jpeg">
                 </figure>
                 <br>
                 <p class="title">Search meals</p>
@@ -51,7 +51,7 @@
             <div class="tile is-parent">
               <article class="tile is-child notification has-text-centered">
                 <figure class="image is-4by3">
-                  <img src="../assets/enjoy1.jpeg">
+                  <img src="../assets/enjoy1_1.jpeg">
                 </figure>
                 <br>
                 <p class="title">Enjoy</p>
@@ -92,7 +92,7 @@ export default {
 
 <style>
 .bg-img {
-     background-image: url(../assets/foodie1.jpg) ;
+     background-image: url(../assets/foodie1_1.jpg) ;
      background-position: center center;
      background-repeat:  no-repeat;
      background-attachment: fixed;
