@@ -110,6 +110,7 @@
                     <span v-if="product.type.indexOf('Vegan') > -1" class="tag is-primary">Vegan</span>
                     <span v-if="product.type.indexOf('Vegetarian') > -1 && product.type.indexOf('Vegan') < 0" class="tag is-primary">Veggie</span>
                     <span v-if="product.type.indexOf('Fish') > -1" class="tag is-primary ">Fish</span>
+                    <span v-if="product.type.indexOf('Soup') > -1" class="tag is-primary ">Soup</span>
                     <!--<span v-else class="tag is-danger is-pulled-right">?? &euro;</span>-->
                   </p>
                 </div>
