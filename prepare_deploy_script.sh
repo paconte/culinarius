@@ -18,7 +18,7 @@ zip -r dist.zip ./dist/
 
 # copy files to the server
 echo "Copy files to host."
-scp ./dist.zip ./culinarius_deploy.sh ${PUBLISH_HOST}:/root/
+scp ./dist.zip ./${DEPLOY_SCRIPT} ${PUBLISH_HOST}:/root/
 
 # deploy for production
 echo "Deploy for prodution."
