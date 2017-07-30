@@ -5,10 +5,11 @@
         <div class="content has-text-centered">
           <router-link to="/">Home</router-link>
           <router-link class="margin" to="/faq">FAQ</router-link>
-          <!--<router-link class="margin" to="/legal">Legal</router-link>-->
-          <router-link class="margin" to="/privacy">Privacy</router-link>
+          <router-link class="margin" to="/legal-and-privacy">Legal & Privacy</router-link>
           <router-link class="margin" to="/impresum">Impresum</router-link>
+          <!--
           <div class="content pull-right text-muted">© 2017 FJRL</div>
+          -->
         </div>
       </div>
     </footer>

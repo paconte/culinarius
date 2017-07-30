@@ -24,7 +24,7 @@ export default new Router({
       component: FaqView,
     },
     {
-      path: '/privacy',
+      path: '/legal-and-privacy',
       component: PrivacyView,
     },
     {
