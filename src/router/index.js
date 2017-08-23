@@ -28,7 +28,7 @@ export default new Router({
       component: PrivacyView,
     },
     {
-      path: '/impresum',
+      path: '/impressum',
       component: ImpresumView,
     },
   ],
