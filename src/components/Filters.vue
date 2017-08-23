@@ -102,15 +102,15 @@
                   <p>
                     <span class="is-small" style="font-size: small;">{{product.business}}</span>
                     <br>
-                    {{product.name}}
+                    {{product.dish}}
                     <br>
                     <span v-if="product.price" class="tag is-warning">{{product.price}} &euro;</span>
                     <!--<span class="tag is-primary">{{product.business}}</span>-->
-                    <span v-if="product.type.indexOf('Bio') > -1" class="tag is-primary">Bio</span>
-                    <span v-if="product.type.indexOf('Vegan') > -1" class="tag is-primary">Vegan</span>
-                    <span v-if="product.type.indexOf('Vegetarian') > -1 && product.type.indexOf('Vegan') < 0" class="tag is-primary">Veggie</span>
-                    <span v-if="product.type.indexOf('Fish') > -1" class="tag is-primary ">Fish</span>
-                    <span v-if="product.type.indexOf('Soup') > -1" class="tag is-primary ">Soup</span>
+                    <span v-if="product.ingredients.indexOf('Bio') > -1" class="tag is-primary">Bio</span>
+                    <span v-if="product.ingredients.indexOf('Vegan') > -1" class="tag is-primary">Vegan</span>
+                    <span v-if="product.ingredients.indexOf('Vegetarian') > -1 && product.ingredients.indexOf('Vegan') < 0" class="tag is-primary">Veggie</span>
+                    <span v-if="product.ingredients.indexOf('Fish') > -1" class="tag is-primary ">Fish</span>
+                    <span v-if="product.ingredients.indexOf('Soup') > -1" class="tag is-primary ">Soup</span>
                     <!--<span v-else class="tag is-danger is-pulled-right">?? &euro;</span>-->
                   </p>
                 </div>

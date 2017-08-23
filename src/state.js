@@ -74,17 +74,16 @@ const ProductStore = {
   getCurrentProducts() {
     const result = [];
     products.forEach((x) => {
-      const date = moment(x.date, momentFormat);
-      if (x.location === this.state.location
-         && this.state.date.isSame(date, 'day')) {
+      const date = moment(x.date.$date);
+      if (x.location === this.state.location && this.state.date.isSame(date, 'day')) {
         if (this.state.ingredientFilter === 'All' && this.state.businessFilter === 'All') {
           result.push(x);
         } else if (this.state.ingredientFilter === 'All' && x.business === this.state.businessFilter) {
           result.push(x);
-        } else if (this.state.businessFilter === 'All' && x.type.indexOf(this.state.ingredientFilter) > -1) {
+        } else if (this.state.businessFilter === 'All' && x.ingredients.indexOf(this.state.ingredientFilter) > -1) {
           result.push(x);
         } else if (x.business === this.state.businessFilter
-                  && x.type.indexOf(this.state.ingredientFilter) > -1) {
+                  && x.ingredients.indexOf(this.state.ingredientFilter) > -1) {
           result.push(x);
         }
       }
@@ -104,9 +103,9 @@ const ProductStore = {
           result.push(x);
         } else if (filterFood === 'All' && x.business === filterBusiness) {
           result.push(x);
-        } else if (filterBusiness === 'All' && x.type.indexOf(filterFood) > -1) {
+        } else if (filterBusiness === 'All' && x.ingredients.indexOf(filterFood) > -1) {
           result.push(x);
-        } else if (x.business === filterBusiness && x.type.indexOf(filterFood) > -1) {
+        } else if (x.business === filterBusiness && x.ingredients.indexOf(filterFood) > -1) {
           result.push(x);
         }
       }
@@ -119,7 +118,7 @@ const ProductStore = {
   getIngredientFilters() {
     const auxSet = new Set();
     Object.keys(this.state.products).forEach((key) => {
-      this.state.products[key].type.forEach((element) => { auxSet.add(element); });
+      this.state.products[key].ingredients.forEach((element) => { auxSet.add(element); });
     });
     let result = Array.from(auxSet).sort();
     result = result.sort();
@@ -152,7 +151,7 @@ const ProductStore = {
           auxSet.add(x.business);
           break;
         case 'food':
-          x.type.forEach((element) => { auxSet.add(element); });
+          x.ingredients.forEach((element) => { auxSet.add(element); });
           break;
         case 'location':
           auxSet.add(x.location);
