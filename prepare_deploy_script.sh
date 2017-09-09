@@ -1,11 +1,13 @@
 #!/bin/sh
 
 # variables
+LOCAL_PATH=/home/frevilla/devel/culinarius/
 PUBLISH_HOST=root@frevilla.com
 DEPLOY_SCRIPT=server_deploy.sh
 
 # delete files
 set +e
+cd ${LOCAL_PATH}
 echo "Deleting local files."
 rm ./dist/*.*
 rm ./dist.zip
