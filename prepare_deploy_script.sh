@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # variables
-LOCAL_PATH=/home/frevilla/devel/culinarius/
+LOCAL_PATH=$( cd $(dirname $0) ; pwd -P ) #/home/frevilla/devel/culinarius/
 USER_HOST=coolinarius
 PUBLISH_HOST=${USER_HOST}@frevilla.com
 FILES_HOST=/home/${USER_HOST}/

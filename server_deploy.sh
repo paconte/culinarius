@@ -26,4 +26,4 @@ rm -rf ${PUBLISH_PATH}/dist/
 rm -rf ${PUBLISH_PATH}/dist.zip
 
 # change ownership
-chown -R www-data:www-data ${PUBLISH_PATH}
+# chown -R www-data:www-data ${PUBLISH_PATH}
