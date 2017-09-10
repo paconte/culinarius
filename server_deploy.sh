@@ -3,7 +3,7 @@ set -e
 
 # variables
 PUBLISH_PATH=/var/www/mahlzeit
-LOCAL_FILES=/root
+LOCAL_FILES=/home/coolinarius
 
 # check if zip file exists
 if [ -e ${LOCAL_FILES}/dist.zip ]; then
