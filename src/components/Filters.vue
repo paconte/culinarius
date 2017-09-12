@@ -42,13 +42,11 @@
           </div>
         </div>
 
-
-
         <div class="column is-two-thirds">
           <!-- Location and Date combobox -->
           <div class="field is-horizontal">
             <div class="field-body">
-              <div class="field">
+              <div class="field is-horizontal">
                 <div class="control is-expanded">
                   <div class="select is-fullwidth">
                     <select v-model="location">
@@ -57,7 +55,7 @@
                   </div>
                 </div>
               </div>
-              <div class="field">
+              <div class="field is-horizontal">
                 <div class="control is-expanded">
                   <div class="select is-fullwidth">
                     <select v-model="date">
@@ -66,17 +64,18 @@
                   </div>
                 </div>
               </div>
+              <!-- Search Field -->
+              <div class="field has-addons">
+                <p class="control is-expanded">
+                  <input v-model="query" class="input" type="text" placeholder="Find a lunch">
+                </p>
+                <p class="control">
+                  <a class="button is-info">Search</a>
+                </p>
+              </div>
             </div>
           </div>
-          <!-- Search Field -->
-          <div class="field has-addons">
-            <p class="control is-expanded">
-              <input v-model="query" class="input" type="text" placeholder="Find a lunch">
-            </p>
-            <p class="control">
-              <a class="button is-info">Search</a>
-            </p>
-          </div>
+
           <!-- products -->
           <div >
           <div class="box custom-box" v-for="product in state.products">
