@@ -2,30 +2,22 @@ import products from './test';
 
 const moment = require('moment');
 
-
-const currentDate = moment();
 const momentFormat = 'dddd - DD.MM.YYYY';
+const workingDates = [
+  moment().day(1), moment().day(2), moment().day(3), moment().day(4), moment().day(5)];
 
 
 function formatDate(date) { return date.format(momentFormat); }
 
-
-function getAvailableDates() {
-  const result = [];
-  let day;
-  const saturday = moment().day(6);
-  const sunday = moment().day(0);
-  // Sunday=0 and Saturday=6
-  for (let i = 1; i < 6; i += 1) {
-    day = moment().day(i);
-    if (day.isSameOrAfter(currentDate, 'day')
-      || currentDate.isSame(saturday, 'day') || currentDate.isSame(sunday, 'day')) {
-      result.push(day);
-    }
+function getCurrentDate() {
+  let result;
+  if (moment().day() > 5) {
+    result = moment.day(5);
+  } else {
+    result = moment();
   }
   return result;
 }
-
 
 const ProductStore = {
   debug: true,
@@ -34,8 +26,8 @@ const ProductStore = {
     ingredientFilter: 'All',
     businessFilter: 'All',
     location: '',
-    date: moment(),
-    availableDates: getAvailableDates(),
+    date: getCurrentDate(),
+    availableDates: workingDates,
     ingredients: [],
     businesses: [],
   },
@@ -84,28 +76,6 @@ const ProductStore = {
           result.push(x);
         } else if (x.business === this.state.businessFilter
                   && x.ingredients.indexOf(this.state.ingredientFilter) > -1) {
-          result.push(x);
-        }
-      }
-    });
-    return result;
-  },
-  /**
-  * Not used => delete?
-  */
-  getFilteredProducts(location, filterFood, filterBusiness) {
-    this.state.ingredientFilter = filterFood;
-    this.state.businessFilter = filterBusiness;
-    const result = [];
-    products.forEach((x) => {
-      if (x.location === location) {
-        if (filterFood === 'All' && filterBusiness === 'All') {
-          result.push(x);
-        } else if (filterFood === 'All' && x.business === filterBusiness) {
-          result.push(x);
-        } else if (filterBusiness === 'All' && x.ingredients.indexOf(filterFood) > -1) {
-          result.push(x);
-        } else if (x.business === filterBusiness && x.ingredients.indexOf(filterFood) > -1) {
           result.push(x);
         }
       }
@@ -179,8 +149,10 @@ const ProductStore = {
       this.state.products = this.getCurrentProducts();
       const newProducts = [];
       this.state.products.forEach((x) => {
+        console.log(x.business);
+        console.log(x.dish);
         if (x.business.toLowerCase().indexOf(qAux) !== -1
-        || x.name.toLowerCase().indexOf(qAux) !== -1) {
+        || x.dish.toLowerCase().indexOf(qAux) !== -1) {
           newProducts.push(x);
         }
       });
