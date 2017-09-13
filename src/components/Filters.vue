@@ -151,7 +151,7 @@ export default {
   },
   methods: {
     onResize() {
-      const clientWidth = document.documentElement.clientWidth;
+      const { clientWidth } = document.documentElement.clientWidth;
       let menuWidth;
 
       if (this.compress) {

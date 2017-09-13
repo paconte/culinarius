@@ -82,7 +82,7 @@ export default {
     navigate() {
       if (this.location !== '') {
         const destination = `/meals/${this.location}`;
-        ProductStore.setLocation(location);
+        ProductStore.setLocation(this.location);
         this.$router.push(destination);
       }
     },
