@@ -43,7 +43,7 @@
         </div>
 
         <div class="column is-two-thirds">
-          <!-- Location and Date combobox -->
+          <!-- Location combobox -->
           <div class="field is-horizontal">
             <div class="field-body">
               <div class="field is-horizontal">
@@ -55,6 +55,7 @@
                   </div>
                 </div>
               </div>
+              <!--  combobox -->
               <div class="field is-horizontal">
                 <div class="control is-expanded">
                   <div class="select is-fullwidth">
