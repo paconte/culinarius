@@ -6,6 +6,7 @@ import FaqView from '../views/FaqView';
 import PrivacyView from '../views/PrivacyView';
 import ImpresumView from '../views/ImpresumView';
 import FoodView from '../views/FoodView';
+import MapView from '../views/MapView';
 
 Vue.use(Router);
 
@@ -30,6 +31,10 @@ export default new Router({
     {
       path: '/impressum',
       component: ImpresumView,
+    },
+    {
+      path: '/map',
+      component: MapView,
     },
   ],
 });
