@@ -27,3 +27,5 @@ rm -rf ${PUBLISH_PATH}/dist.zip
 
 # change ownership
 # chown -R www-data:www-data ${PUBLISH_PATH}
+# print timestamp
+echo $(date +%Y-%m-%d:%H:%M:%S) >> ${LOCAL_FILES}/deploy_timestamps.txt
