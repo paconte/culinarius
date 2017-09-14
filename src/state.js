@@ -1,4 +1,4 @@
-import products from './test';
+import products from './lunches';
 
 const moment = require('moment');
 

@@ -4,14 +4,16 @@
       <h2>Hello World</h2>
       <gmap-map
         :center="center"
-        :zoom="7"
-        style="width: 500px; height: 300px">
+        :zoom="15"
+        style="width: 1000px; height: 500px">
         <gmap-marker
           :key="index"
           v-for="(m, index) in markers"
           :position="m.position"
           :clickable="true"
-          :draggable="true"
+          :draggable="false"
+          :title="m.title"
+
           @click="center=m.position">
         </gmap-marker>
       </gmap-map>
@@ -30,17 +32,21 @@ Vue.use(VueGoogleMaps, {
   },
 });
 // VueGoogleMaps.load('AIzaSyCowiYpsvUU-1G1IRWJtFiz1gAu5a_9U0o', '3.29');
-
+// http://maps.google.com/mapfiles/ms/icons/green-dot.png
 export default {
   data() {
     return {
-      center: { lat: 10.0, lng: 10.0 },
+      center: { lat: 52.431571, lng: 13.533930 },
       markers: [
         {
-          position: { lat: 10.0, lng: 10.0 },
+          position: { lat: 52.431487, lng: 13.536813 },
+          title: 'Albert',
+          icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
         },
         {
           position: { lat: 11.0, lng: 11.0 },
+          title: 'Sonnenschein',
+          icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
         },
       ],
     };
