@@ -153,7 +153,7 @@ const ProductStore = {
       const newProducts = [];
       this.state.products.forEach((x) => {
         if (x.business.toLowerCase().indexOf(qAux) !== -1
-        || x.name.toLowerCase().indexOf(qAux) !== -1) {
+        || x.dish.toLowerCase().indexOf(qAux) !== -1) {
           newProducts.push(x);
         }
       });
