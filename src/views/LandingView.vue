@@ -8,8 +8,7 @@
             <span class="select is-large">
               <select style="padding-right: 60px" v-model="location">
                 <option disabled value="">Select your location</option>
-                <option>Adlershof</option>
-                <option>Alexanderplatz</option>
+                <option v-for="location in locations">{{location}}</option>
               </select>
             </span>
           </p>
@@ -76,6 +75,7 @@ export default {
   data() {
     return {
       location: '',
+      locations: ProductStore.getFilters('location'),
     };
   },
   methods: {
