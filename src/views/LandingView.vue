@@ -57,7 +57,6 @@
                 <span class="tag is-warning">3</span>
               </article>
             </div>
-
           </div>
         </div>
       </div>
@@ -104,5 +103,12 @@ export default {
   margin: 0 auto;
   top: 50%;
   transform: translateY(500%);
+}
+.content figure {
+  margin-left: 0;
+  margin-right: -1em;
+}
+.tile.is-child {
+  border-radius: 25px;
 }
 </style>
